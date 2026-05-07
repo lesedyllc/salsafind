@@ -24,10 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupDateInput() {
   const input = document.getElementById('dateInput');
   const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(today.getDate() - 1);
   const maxDate = new Date(today);
   maxDate.setDate(today.getDate() + 30);
 
-  input.min = formatDateInput(today);
+  input.min = formatDateInput(yesterday);
   input.max = formatDateInput(maxDate);
   input.value = formatDateInput(today);
   state.date = input.value;
